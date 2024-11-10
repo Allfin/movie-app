@@ -2,20 +2,32 @@ import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_MOVIE_BASE_URL;
 // const imgUrl = import.meta.env.VITE_MOVIE_BASE_IMG;
-const header = import.meta.env.VITE_MOVIE_TOKEN;
+const token = import.meta.env.VITE_MOVIE_TOKEN;
 
-export const getMovieList = async () => {
+const headers = {
+  accept: "application/json",
+  Authorization: `Bearer ${token}`,
+};
+
+export const getPopularMovieList = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/movie/popular?page=1`, {
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${header}`,
-      },
+    const response = await axios.get(`${baseUrl}/movie/upcoming?page=1`, {
+      headers,
     });
 
-    const data = await response.json();
-    const movies = data.results.slice(0, 6);
-    return movies;
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getGenreList = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/genre/movie/list`, {
+      headers,
+    });
+
+    return response.data.genres;
   } catch (error) {
     console.log(error);
   }

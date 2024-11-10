@@ -17,11 +17,15 @@ export default function Header() {
   };
 
   return (
-    <Container>
-      <AppBar position="static" color="transparent" sx={{ py: "15px" }}>
-        <Toolbar>
+    <AppBar position="static" color="transparent">
+      <Container>
+        <Toolbar
+          sx={{
+            "@media (min-width: 0px)": { paddingRight: 0, paddingLeft: 0 },
+          }}
+        >
           {/* Logo */}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
             Movie App
           </Typography>
           {/* Menu Items */}
@@ -32,7 +36,16 @@ export default function Header() {
                 key={index}
                 onClick={() => hanlderNav(menu)}
               >
-                {menu}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    ":hover": {
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  {menu}
+                </Typography>
               </Button>
             ))}
             {/* Menu for mobile */}
@@ -46,7 +59,7 @@ export default function Header() {
             </IconButton>
           </div>
         </Toolbar>
-      </AppBar>
-    </Container>
+      </Container>
+    </AppBar>
   );
 }

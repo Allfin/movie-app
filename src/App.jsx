@@ -1,7 +1,7 @@
-import Header from "./Components/Header";
+import Header from "./components/Header";
 import "./App.css";
 import { Container } from "@mui/material";
-import HomeScreen from "./Screens/HomeScreen";
+import HomeScreen from "./pages/HomeScreen";
 
 const App = () => {
   return (
