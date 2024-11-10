@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPopularMovieList } from "../api";
+import { getGenreList, getPopularMovieList } from "../api";
 // import Grid from "@mui/material/Grid2";
 // import { Card, CardContent, Typography } from "@mui/material";
 import MovieCard from "../components/MovieCard";
@@ -10,8 +10,8 @@ import "swiper/css/pagination";
 import { Typography } from "@mui/material";
 
 const HomeScreen = () => {
-  // const [trendingMovie, setTrendingMovie] = useState([]);
   const [popularMovie, setPopularMovie] = useState([]);
+  const [genreList, setGenreList] = useState([]);
 
   useEffect(() => {
     const fetchPopularMovie = async () => {
@@ -19,7 +19,13 @@ const HomeScreen = () => {
       setPopularMovie(popularMovieList);
     };
 
+    const fetchGenreMovie = async () => {
+      const genreData = await getGenreList();
+      setGenreList(genreData);
+    };
+
     fetchPopularMovie();
+    fetchGenreMovie();
   }, []);
 
   console.log({ popularMovie: popularMovie });
@@ -52,6 +58,7 @@ const HomeScreen = () => {
                 genreId={movie.genre_ids}
                 image={movie.poster_path}
                 rating={movie.vote_average}
+                genreList={genreList}
               />
             </SwiperSlide>
           ))}

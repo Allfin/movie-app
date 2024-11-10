@@ -1,12 +1,8 @@
 import PropTypes from "prop-types";
 import { Box, Card, CardMedia, Chip, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import { getGenreList } from "../api";
-import { useEffect, useState } from "react";
 
-const MovieCard = ({ title, image, rating, genreId }) => {
-  const [genreList, setGenreList] = useState([]);
-
+const MovieCard = ({ title, image, rating, genreId, genreList }) => {
   const genreNames = genreId
     .map((id) => {
       const genre = genreList.find((genre) => genre.id === id);
@@ -35,14 +31,6 @@ const MovieCard = ({ title, image, rating, genreId }) => {
     War: "#3B3B3B", // Dark Gray
     Western: "#5C4033", // Dark Brown
   };
-
-  useEffect(() => {
-    const fetchGenreMovie = async () => {
-      const genreData = await getGenreList();
-      setGenreList(genreData);
-    };
-    fetchGenreMovie();
-  }, []);
 
   return (
     <Card
@@ -130,6 +118,7 @@ MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
   genreId: PropTypes.object,
+  genreList: PropTypes.object,
   image: PropTypes.string.isRequired,
 };
 
