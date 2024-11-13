@@ -32,3 +32,18 @@ export const getGenreList = async () => {
     console.log(error);
   }
 };
+
+export const getForMovies = async (movieCategories) => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/movie/${movieCategories}?page=1`,
+      {
+        headers,
+      }
+    );
+
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};

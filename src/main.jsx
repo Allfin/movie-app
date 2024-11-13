@@ -7,8 +7,13 @@ import { createTheme, ThemeProvider } from "@mui/material";
 const theme = createTheme({
   typography: {
     fontFamily: "Dosis, Arial, sans-serif",
-    lineHeight: 1.5,
     color: "#fff",
+    h2: { fontSize: "24px", fontWeight: 700 },
+    p: {
+      fontSize: "14px",
+      fontWeight: 700,
+      fontFamily: "Dosis, Arial, sans-serif",
+    },
     body1: { fontSize: "1.5rem" },
     body2: { fontSize: "1rem", color: "rgb(171, 183, 196)" },
   },

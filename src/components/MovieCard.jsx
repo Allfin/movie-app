@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Box, Card, CardMedia, Chip, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
-const MovieCard = ({ title, image, rating, genreId, genreList }) => {
+const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
   const genreNames = genreId
     .map((id) => {
       const genre = genreList.find((genre) => genre.id === id);
@@ -35,15 +35,15 @@ const MovieCard = ({ title, image, rating, genreId, genreList }) => {
   return (
     <Card
       sx={{
-        height: 343,
+        height: mini ? "70" : "340",
         cursor: "pointer",
         position: "relative",
         overflow: "hidden",
         "&:hover .overlay": {
-          backgroundColor: "rgba(0, 0, 0, 0.6)", // Darken on hover
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
         },
         "&:hover .hover-content": {
-          opacity: 1, // Show title and other hover content on hover
+          opacity: 1,
         },
       }}
     >
@@ -113,6 +113,10 @@ const MovieCard = ({ title, image, rating, genreId, genreList }) => {
   );
 };
 
+MovieCard.defaultProps = {
+  mini: false,
+};
+
 // Menambahkan validasi prop-types
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
@@ -120,6 +124,7 @@ MovieCard.propTypes = {
   genreId: PropTypes.object,
   genreList: PropTypes.object,
   image: PropTypes.string.isRequired,
+  mini: PropTypes.bool,
 };
 
 export default MovieCard;
