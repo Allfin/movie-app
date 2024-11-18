@@ -22,7 +22,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const HomeScreen = () => {
+const Home = () => {
   const [popularMovie, setPopularMovie] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
@@ -67,7 +67,7 @@ const HomeScreen = () => {
     fetchForMovies();
   };
 
-  console.log(spotlightPeople);
+  console.log(popularMovie);
 
   return (
     <>
@@ -259,4 +259,4 @@ const HomeScreen = () => {
     </>
   );
 };
-export default HomeScreen;
+export default Home;

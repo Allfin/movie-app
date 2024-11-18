@@ -1,13 +1,17 @@
 import Header from "./components/Header";
 import "./App.css";
-import HomeScreen from "./pages/HomeScreen";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <>
       <Header />
       <main>
-        <HomeScreen />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+        </Routes>
       </main>
     </>
   );
