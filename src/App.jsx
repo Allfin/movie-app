@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import "./App.css";
-import { Container } from "@mui/material";
 import HomeScreen from "./pages/HomeScreen";
 
 const App = () => {
@@ -8,9 +7,7 @@ const App = () => {
     <>
       <Header />
       <main>
-        <Container>
-          <HomeScreen />
-        </Container>
+        <HomeScreen />
       </main>
     </>
   );

@@ -23,7 +23,7 @@ export const getPopularMovieList = async () => {
 
 export const getGenreList = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/genre/movie/list`, {
+    const response = await axios.get(`${baseUrl}/genre/movie/list?page=1`, {
       headers,
     });
 
@@ -41,6 +41,18 @@ export const getForMovies = async (movieCategories) => {
         headers,
       }
     );
+
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getTrendingPeople = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/trending/person/week?page=1`, {
+      headers,
+    });
 
     return response.data.results;
   } catch (error) {

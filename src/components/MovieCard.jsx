@@ -11,25 +11,25 @@ const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
     .filter((name) => name !== null);
 
   const genreColors = {
-    Action: "#8B0000", // Dark Red
-    Adventure: "#8B4513", // SaddleBrown
-    Animation: "#556B2F", // DarkOliveGreen
-    Comedy: "#8B8B00", // DarkGoldenRod
-    Crime: "#4B0082", // Indigo
-    Documentary: "#2F4F4F", // DarkSlateGray
-    Drama: "#A52A2A", // Brown
-    Family: "#4682B4", // SteelBlue
-    Fantasy: "#6A5ACD", // SlateBlue
-    History: "#8B4513", // SaddleBrown
-    Horror: "#2E2E2E", // Darker Gray
-    Music: "#483D8B", // DarkSlateBlue
-    Mystery: "#696969", // DimGray
-    Romance: "#800000", // Maroon
-    "Science Fiction": "#008080", // Teal
-    "TV Movie": "#4B0082", // Indigo
-    Thriller: "#2C3539", // Gunmetal
-    War: "#3B3B3B", // Dark Gray
-    Western: "#5C4033", // Dark Brown
+    Action: "#8B0000",
+    Adventure: "#8B4513",
+    Animation: "#556B2F",
+    Comedy: "#8B8B00",
+    Crime: "#4B0082",
+    Documentary: "#2F4F4F",
+    Drama: "#A52A2A",
+    Family: "#4682B4",
+    Fantasy: "#6A5ACD",
+    History: "#8B4513",
+    Horror: "#2E2E2E",
+    Music: "#483D8B",
+    Mystery: "#696969",
+    Romance: "#800000",
+    "Science Fiction": "#008080",
+    "TV Movie": "#4B0082",
+    Thriller: "#2C3539",
+    War: "#3B3B3B",
+    Western: "#5C4033",
   };
 
   return (
@@ -49,10 +49,9 @@ const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
     >
       <CardMedia
         component="img"
-        image={`${import.meta.env.VITE_MOVIE_BASE_IMG}/${image}`} // URL gambar
+        image={`${import.meta.env.VITE_MOVIE_BASE_IMG}/${image}`} //
         alt={title}
         className="media"
-        sx={{ height: "100%", width: "100%" }}
       />
       <Box
         className="overlay"
@@ -75,7 +74,7 @@ const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
           color: "#fff",
           zIndex: 2,
           padding: 2,
-          // opacity: 0,
+
           transition: "opacity 0.3s ease",
         }}
         className="hover-content"
@@ -117,7 +116,6 @@ MovieCard.defaultProps = {
   mini: false,
 };
 
-// Menambahkan validasi prop-types
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
