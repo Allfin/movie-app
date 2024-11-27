@@ -15,8 +15,9 @@ const theme = createTheme({
       fontWeight: 700,
       fontFamily: "Dosis, Arial, sans-serif",
     },
-    body1: { fontSize: "1.5rem" },
+    body1: { fontSize: "1.5rem", color: "rgb(171, 183, 196)" },
     body2: { fontSize: "1rem", color: "rgb(171, 183, 196)" },
+    span: { fontSize: "1rem", color: "rgb(171, 183, 196)" },
   },
 });
 

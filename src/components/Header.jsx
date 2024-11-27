@@ -1,6 +1,7 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Link as LinkRouter } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Container, IconButton, useScrollTrigger } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -36,13 +37,20 @@ export default function Header() {
           }}
         >
           {/* Logo */}
-          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            component={LinkRouter}
+            to="/"
+            variant="body1"
+            sx={{ flexGrow: 1, fontStyle: "none" }}
+          >
             Movie App
           </Typography>
           {/* Menu Items */}
           <div>
             {menuItems.map((menu, index) => (
               <Button
+                component={LinkRouter}
+                to={`/${menu}`}
                 color="inherit"
                 key={index}
                 onClick={() => hanlderNav(menu)}

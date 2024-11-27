@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   getGenreList,
   getPopularMovieList,
@@ -20,6 +21,7 @@ import {
   ListItemText,
   Stack,
   Typography,
+  Link,
 } from "@mui/material";
 
 const Home = () => {
@@ -79,9 +81,10 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundPositionX: "50%",
           backgroundPositiony: "50%",
+          paddingTop: "80px",
         }}
       >
-        <Container sx={{ paddingTop: "80px", pb: 2 }}>
+        <Container sx={{ pb: 2 }}>
           <Typography variant="h2">Popular Movies</Typography>
           <Swiper
             breakpoints={{
@@ -109,13 +112,16 @@ const Home = () => {
           >
             {popularMovie.map((movie, index) => (
               <SwiperSlide key={index}>
-                <MovieCard
-                  title={movie.title}
-                  genreId={movie.genre_ids}
-                  image={movie.poster_path}
-                  rating={movie.vote_average}
-                  genreList={genreList}
-                />
+                <Link component={RouterLink} to="/detail">
+                  <MovieCard
+                    movieId={movie.id}
+                    title={movie.title}
+                    genreId={movie.genre_ids}
+                    image={movie.poster_path}
+                    rating={movie.vote_average}
+                    genreList={genreList}
+                  />
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -199,6 +205,7 @@ const Home = () => {
                   {nowPlayingMovie.map((movie, index) => (
                     <SwiperSlide key={index}>
                       <MovieCard
+                        movieId={movie.id}
                         mini={true}
                         title={movie.title}
                         genreId={movie.genre_ids}

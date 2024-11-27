@@ -1,8 +1,17 @@
 import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
 import { Box, Card, CardMedia, Chip, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
-const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
+const MovieCard = ({
+  title,
+  movieId,
+  image,
+  rating,
+  genreId,
+  genreList,
+  mini,
+}) => {
   const genreNames = genreId
     .map((id) => {
       const genre = genreList.find((genre) => genre.id === id);
@@ -34,6 +43,8 @@ const MovieCard = ({ title, image, rating, genreId, genreList, mini }) => {
 
   return (
     <Card
+      component={RouterLink}
+      to={`/movie/${movieId}`}
       sx={{
         height: mini ? "70" : "340",
         cursor: "pointer",
@@ -118,6 +129,7 @@ MovieCard.defaultProps = {
 
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
+  movieId: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
   genreId: PropTypes.object,
   genreList: PropTypes.object,

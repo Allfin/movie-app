@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_MOVIE_BASE_URL;
-// const imgUrl = import.meta.env.VITE_MOVIE_BASE_IMG;
 const token = import.meta.env.VITE_MOVIE_TOKEN;
 
 const headers = {
@@ -55,6 +54,30 @@ export const getTrendingPeople = async () => {
     });
 
     return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getDetailMovie = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/movie/${id}`, {
+      headers,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCredits = async (id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/movie/${id}/credits`, {
+      headers,
+    });
+
+    return response.data;
   } catch (error) {
     console.log(error);
   }
